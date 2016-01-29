@@ -1,53 +1,71 @@
 /**
-   A question with a text and an answer.
-*/
+A question with a text and an answer.
+ */
 public class Question
 {
-   private String text;
-   private String answer;
+    private String text;
+    private String answer;
 
-   /**
-      Constructs a question with empty question and answer.
-   */
-   public Question() 
-   {
-      text = "";
-      answer = "";
-   }
+    /**
+     * for use with subclasses
+     */
+    protected String getAnswer()
+    {
+        return this.answer;
+    }
 
-   /**
-      Sets the question text.
-      @param questionText the text of this question
-   */
-   public void setText(String questionText)   
-   {
-      text = questionText;
-   }
+    /**
+    Constructs a question with empty question and answer.
+     */
+    public Question() 
+    {
+        text = "";
+        answer = "";
+    }
 
-   /**
-      Sets the answer for this question.
-      @param correctResponse the answer
-   */
-   public void setAnswer(String correctResponse)
-   {
-      answer = correctResponse;
-   }
+    /**
+    Sets the question text.
+    @param questionText the text of this question
+     */
+    public void setText(String questionText)   
+    {
+        text = questionText;
+    }
 
-   /**
-      Checks a given response for correctness.
-      @param response the response to check
-      @return true if the response was correct, false otherwise
-   */
-   public boolean checkAnswer(String response)
-   {
-      return response.equals(answer);
-   }
+    /**
+     * Adds text to the question text
+     *
+     * @param questionText the additional text of this question
+     */
+    public void addText(String questionText)
+    {
+        this.text+=questionText;
+    }
 
-   /**
-      Displays this question.
-   */
-   public void display()
-   {
-      System.out.println(text);
-   }
+    /**
+    Sets the answer for this question.
+    @param correctResponse the answer
+     */
+    public void setAnswer(String correctResponse)
+    {
+        answer = correctResponse;
+    }
+
+    /**
+    Checks a given response for correctness.
+    @param response the response to check
+    @return true if the response was correct, false otherwise
+     */
+    public boolean checkAnswer(String response)
+    {
+        return response.toLowerCase().equals(answer.toLowerCase());
+    }
+
+    /**
+    Displays this question.
+     */
+    public void display()
+    {
+        System.out.println(text);
+    }
 }
