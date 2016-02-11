@@ -1,4 +1,4 @@
-public class Person implements Comparable
+public class Person implements Comparable<Person>
 {
     private String name;
     
@@ -21,10 +21,9 @@ public class Person implements Comparable
     }
     
     
-    public int compareTo(Object other)
+    public int compareTo(Person other)
     {    
-        Person otherPerson = (Person) other;
-        return this.name.compareTo(otherPerson.name);
+        return this.name.compareTo(other.name);
         
         
     }

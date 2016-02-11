@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 
 public class PersonTester
 {
@@ -9,22 +9,19 @@ public class PersonTester
     public static void main(String[] args)
     {
         Scanner s = new Scanner(System.in);
-        Person[] people = {new Person("Cicero"), new Person("Caesar"), new Person("Pompey"),
-            new Person("Joseph McCarthy"), new Person("Josef Stalin"), new Person("Vladmir Lenin"), 
-            new Person("Marcus Lepidus"), new Person("Scipio Africanus"), 
-            new Person("Quintus Fabius"), new Person("Augustus")};
+        ArrayList<Person> people = new ArrayList<Person>();
         
-        /**
+        
         for (int i = 0; i < 10; i++)
         {
             System.out.print("Name of person: ");
             people.add(new Person(s.next()));
             System.out.println("");
         }
-        **/
+        
         //sorts
 
-        people = new PersonTester().sort(people);
+        Collections.sort(people);
         
         for (Person p : people)
         {
