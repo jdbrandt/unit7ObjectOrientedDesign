@@ -10,12 +10,26 @@ public class TriangleGUIComponent extends JComponent
     private Line2D.Double line2;
     private Line2D.Double line3;
     
+    private Point point1;
+    private Point point2;
+    private Point point3;
+    
+    private Ellipse2D.Double ellipse1;
+    private Ellipse2D.Double ellipse2;
+    private Ellipse2D.Double ellipse3;
+    
     
     public TriangleGUIComponent()
     {
         line1 = new Line2D.Double();
         line2 = new Line2D.Double();
         line3 = new Line2D.Double();
+        point1 = new Point();
+        point2 = new Point();
+        point3 = new Point();
+        ellipse1 = new Ellipse2D.Double();
+        ellipse2 = new Ellipse2D.Double();
+        ellipse3 = new Ellipse2D.Double();
     }
     
     public void paintComponent(Graphics g)
