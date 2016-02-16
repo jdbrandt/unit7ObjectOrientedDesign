@@ -43,6 +43,9 @@ public class TriangleGUIComponent extends JComponent
         g2.draw(ellipse1);
         g2.draw(ellipse2);
         g2.draw(ellipse3);
+        g2.fill(ellipse1);
+        g2.fill(ellipse2);
+        g2.fill(ellipse3);
     }
     
     public void setPoint1(double x, double y)
