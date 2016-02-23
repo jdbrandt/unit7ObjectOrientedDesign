@@ -56,7 +56,6 @@ public class TriangleGUIFrame extends JFrame
             {
                 scene.clear();
                 clicks = 0;
-            
             }
         }
         
