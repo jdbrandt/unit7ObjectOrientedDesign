@@ -10,28 +10,27 @@ public class ControlPanel extends JPanel
     private JButton addSquare;
     private JPanel colorShower;
     private DrawingPanel canvas;
-    
-    
+
     public ControlPanel(DrawingPanel dp)
     {
         canvas = dp;
-        
+
         pick = new JButton("Pick Color");
         addCircle = new JButton("Add Circle");
         addSquare = new JButton("Add Square");
         colorShower = new JPanel();
-        
+
         add(pick);
         add(addCircle);
         add(addSquare);
         add(colorShower);
-        
+
         pick.addActionListener(new ClickListener());
         addCircle.addActionListener(new ClickListener());
         addSquare.addActionListener(new ClickListener());
 
     }
-    
+
     public class ClickListener implements ActionListener
     {
 
@@ -41,9 +40,20 @@ public class ControlPanel extends JPanel
 
         public void actionPerformed(ActionEvent event)
         {
-            if (event.getActionCommand()){}
+            if (event.getActionCommand().equals("Pick Color"))
+            {
+                canvas.pickColor();
+            }
+            else if (event.getActionCommand().equals("Add Circle"))
+            {
+                canvas.addCircle();
+            }
+            else if (event.getActionCommand().equals("Add Square"))
+            {
+                canvas.addSquare();
+            }
         }
     }
 }
-        
+
     

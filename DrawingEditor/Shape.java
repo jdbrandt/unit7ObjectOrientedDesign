@@ -4,9 +4,9 @@ import java.awt.*;
 
 public abstract class Shape
 {
-    private Point2D.Double center;
-    private double radius;
-    private Color color;
+    protected Point2D.Double center;
+    protected double radius;
+    protected Color color;
     
     public abstract Point2D.Double getCenter();
     public abstract double getRadius();

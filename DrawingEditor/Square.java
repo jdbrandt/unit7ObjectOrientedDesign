@@ -1,9 +1,9 @@
 import java.awt.*;
 import java.awt.geom.*;
 
-public class Circle extends Shape
+public class Square extends Shape
 {
-    public Circle()
+    public Square()
     {
         center = new Point2D.Double(0,0);
         radius = 0;
@@ -37,12 +37,32 @@ public class Circle extends Shape
     
     public boolean isInside(Point2D.Double point)
     {
-        return true ? center.distance(point)<radius : false;
+        if (point.getX()>center.getX()-radius && point.getY()>center.getY()-radius && point.getX()<center.getX()+radius && point.getY() < center.getY()+radius)
+        {
+            return true;
+        }
+        return false; 
     }
     
     public boolean isOnBorder(Point2D.Double point)
     {
-        return true ? center.distance(point)==radius : false;
+        if (point.getX()==center.getX()-radius&&point.getY()>=center.getY()-radius&&point.getY()<=center.getY()+radius)
+        {
+            return true;
+        }
+        else if(point.getX()==center.getX()+radius&&point.getY()>=center.getY()-radius&&point.getY()<=center.getY()+radius)
+        {
+            return true;
+        }
+        else if (point.getY()==center.getY()-radius&&point.getX()>=center.getX()-radius&&point.getX()<=center.getX()+radius)
+        {
+            return true;
+        }
+        else if (point.getY()==center.getY()+radius&&point.getX()>=center.getX()-radius&&point.getX()<=center.getX()+radius)
+        {
+            return true;
+        }
+        return false;
     }
     
     public void draw(Graphics2D g2, boolean filled)
