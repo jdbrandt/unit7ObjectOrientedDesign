@@ -12,6 +12,8 @@ public abstract class Shape
     public abstract double getRadius();
     public abstract void move(double x, double y);
     public abstract void setRadius(double r);
+    public abstract void setCenter(Point2D.Double p);
+    public abstract void setCenter(double x, double y);
     public abstract boolean isInside(Point2D.Double point);
     public abstract boolean isOnBorder(Point2D.Double point);
     public abstract void draw(Graphics2D g2, boolean filled);

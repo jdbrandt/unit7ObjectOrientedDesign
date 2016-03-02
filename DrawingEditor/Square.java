@@ -35,6 +35,12 @@ public class Square extends Shape
         center = point;
     }
     
+    public void setCenter(double x, double y)
+    {
+        center = new Point2D.Double(x,y);
+    }
+    
+    
     public boolean isInside(Point2D.Double point)
     {
         if (point.getX()>center.getX()-radius && point.getY()>center.getY()-radius && point.getX()<center.getX()+radius && point.getY() < center.getY()+radius)
@@ -67,10 +73,10 @@ public class Square extends Shape
     
     public void draw(Graphics2D g2, boolean filled)
     {
-        g2.drawOval((int)(center.getX()-radius), (int)(center.getY()-radius), (int)(2*radius), (int)(2*radius));
+        g2.drawRect((int)(center.getX()-radius), (int)(center.getY()-radius), (int)(2*radius), (int)(2*radius));
         if (filled)
         {
-            g2.fillOval((int)(center.getX()-radius), (int)(center.getY()-radius), (int)(2*radius), (int)(2*radius));
+            g2.fillRect((int)(center.getX()-radius), (int)(center.getY()-radius), (int)(2*radius), (int)(2*radius));
         }
     }
     

@@ -35,6 +35,12 @@ public class Circle extends Shape
         center = point;
     }
     
+    public void setCenter(double x, double y)
+    {
+        center = new Point2D.Double(x,y);
+    }
+    
+    
     public boolean isInside(Point2D.Double point)
     {
         return true ? center.distance(point)<radius : false;
