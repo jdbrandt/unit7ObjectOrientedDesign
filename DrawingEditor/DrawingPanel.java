@@ -6,9 +6,7 @@ import java.util.*;
 
 public class DrawingPanel extends JPanel
 {
-    private MouseListener ml;
-    private MouseMotionListener mml;
-    private KeyListener kl;
+    private AllListener l;
 
     private Color backgroundColor;
     private Color drawingColor;
@@ -19,32 +17,37 @@ public class DrawingPanel extends JPanel
     private boolean isMoving;
     private boolean isStretching;
     private boolean selected;
-
-    private Point2D.Double startClicked;
     
-    private double x_1;
-    private double y_1;
+    private JPanel color;
+
+
 
     public DrawingPanel()
     {
         backgroundColor = Color.WHITE;
         drawingColor = Color.BLUE;
         setBackground(backgroundColor);
-        ml = new MouseEvents();
-        mml = new MouseMotionEvents();
-        kl = new KeyEvents();
 
-        this.addMouseListener(ml);
-        this.addMouseMotionListener(mml);
-        this.addKeyListener(kl);
+        l = new AllListener();
+        
+        this.addMouseListener(l);
+        this.addMouseMotionListener(l);
+        this.addKeyListener(l);
 
         shapes = new ArrayList<Shape>();
         activeShape = new Circle();
     }
-
+    
+    public void setColor(Color color)
+    {
+        drawingColor = color;
+    }
+    
     public void pickColor()
     {
-        //pass;
+        setColor(JColorChooser.showDialog(this, "Pick a color", drawingColor));
+        repaint();
+        color.setBackground(drawingColor);
     }
 
     public void  addCircle()
@@ -84,17 +87,22 @@ public class DrawingPanel extends JPanel
     }
 
     
-    public class MouseEvents implements MouseListener
+    public class AllListener implements MouseListener, MouseMotionListener, KeyListener
     {
-
-        public MouseEvents()
+        
+        Point2D.Double startClicked;
+        Point2D.Double startClickedOnScreen;
+        
+        
+        public AllListener()
         {}
 
+        
+        
         public void mouseClicked(MouseEvent e)
         {
             startClicked = new Point2D.Double(e.getX(), e.getY());
-            x_1 = e.getXOnScreen();
-            y_1 = e.getYOnScreen();
+            startClickedOnScreen = new Point2D.Double(e.getXOnScreen(), e.getYOnScreen());
             boolean isActiveShape = false;
 
             if (activeShape.isInside(startClicked) || activeShape.isOnBorder(startClicked))
@@ -122,27 +130,17 @@ public class DrawingPanel extends JPanel
         public void mousePressed(MouseEvent e){}
 
         public void mouseReleased(MouseEvent e){}
-    }
-    public class MouseMotionEvents implements MouseMotionListener
-    {
-        public MouseMotionEvents()
-        {};
 
         public void mouseDragged(MouseEvent e)
         {
-            double deltax = e.getXOnScreen()-x_1;
-            double deltay = e.getYOnScreen()-y_1;
+            double deltax = (e.getXOnScreen()-startClickedOnScreen.getX())/50;
+            double deltay = (e.getYOnScreen()-startClickedOnScreen.getY())/50;
             activeShape.move(deltax, deltay);
             repaint();
         }
 
         public void mouseMoved(MouseEvent e){}
-    }
 
-    public class KeyEvents implements KeyListener
-    {
-        public KeyEvents()
-        {};
 
         public void keyPressed(KeyEvent e){}
 
